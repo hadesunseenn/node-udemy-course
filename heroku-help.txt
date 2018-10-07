@@ -16,4 +16,4 @@
 	git push heroku
 
 6.will open app in default browser
-heroku open
+	heroku open

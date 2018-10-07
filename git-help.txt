@@ -1,0 +1,12 @@
+1.add new files/repo to repo
+	git add filename.txt
+	git add dirname/
+
+	or can add all files with one command
+	git add .
+
+2.commit changes
+	git commit -m 'test message'
+
+3.push changes
+	git push origin master
