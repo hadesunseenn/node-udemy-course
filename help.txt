@@ -1,0 +1,54 @@
+1.create a server.js
+	const express = require('express');
+	const app = express();
+	app.listen(8000);
+
+
+2. we are using handlebars ----template engine----
+	npm install hbs --save
+
+	(1) create view in 'views' dir. this is default which express checks for views
+
+	(2) we can send data to template like this
+		app.get('/about', (req, res)=>{
+			// res.send('This is about page.');
+			res.render('about.hbs',{
+				pageTitle:'About page',
+				currentYear: new Date().getFullYear()
+			});
+		});
+	
+	(3) we can use template parts like this
+		
+		first in server.js mention which directory will be used to hanle partials
+		hbs.registerPartials(__dirname + '/views/partials');
+
+		then in dir 'partials' create views like
+			footer.hbs or header.hbs
+			and we can call these partials in a template like this
+			{{> footer}} or {{> header}}
+
+	(4) we can use helpers in hbs
+		hbs.registerHelper('getCurrentYear',() => {
+			return new Date().getFullYear();
+			// return 123;
+		});
+
+		can use it when we need same data in multiple views
+
+		[1]we can send data to this function as params
+			hbs.registerHelper('scremIt',(text, additional) => {
+				return text.toUppercase()+additional;
+			});
+
+			in template we can call it like this
+				{{scremIt welcomeMessage 123}}
+				{{function param1 param2}}
+
+3.Using ----middlewares---- in express
+
+	we can create as many middlewares as we want in an app
+	this is how we create a middlware app.use();
+	app.use((req, res, next) => {
+		next(); //if we dont use this in middleware the request never completes.so dont forget
+	});
