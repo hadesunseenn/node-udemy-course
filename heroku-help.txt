@@ -8,3 +8,12 @@
 	(1). make port dynamic in server.js
 
 	const port = process.env.PORT || 3000;
+
+4.create new origin for heroku
+	heroku create
+
+5.now push to heroku
+	git push heroku
+
+6.will open app in default browser
+heroku open
