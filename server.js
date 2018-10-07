@@ -2,6 +2,7 @@ const express = require('express');
 var hbs = require('hbs');
 var fs = require('fs');
 var app = express();
+const port = process.env.PORT || 8000;
 
 app.set('view engine', 'hbs');
 //we can access all the files in this dir from browser like /help.html
@@ -64,7 +65,7 @@ app.get('/bad', (req, res)=>{
 	});
 });
 
-app.listen(8000, () => {
+app.listen(port, () => {
 	//sometimes server can take some time to come up, it is called when server is ready
-	console.log('server is up');
+	console.log(`server is up on port ${port}`);
 });
